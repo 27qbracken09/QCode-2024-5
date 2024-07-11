@@ -29,6 +29,24 @@ void DriveController::update(int DriveMethod){
         
         case TANK:
             //Calculate Motor velocity based on joy pos
+            set_motor_speed_tank();
+            break;
+        
+        case ARCADE_L:
+            set_motor_speed_arcade_l();
+            break;
+        
+        case ARCADE_R:
+            set_motor_speed_arcade_r();
+            break;
+        
+        case SPLIT_L_DOM:
+            set_motor_speed_spit_l_dom();
+            break;
+        
+        case SPLIT_R_DOM:
+            set_motor_speed_split_r_dom();
+            break;
         
 
     }
@@ -61,6 +79,74 @@ void DriveController::set_motor_speed_tank(){
 
     motor_move(r1_port, right);
     motor_move(r2_port, right);
+
+
+}
+
+void DriveController::set_motor_speed_arcade_l(){
+    int power = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_LEFT_Y);
+    int mod = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_LEFT_X);
+
+    int left = power+mod;
+    int right = power-mod;
+
+    motor_move(l1_port, left);
+    motor_move(l2_port, left);
+    motor_move(r1_port, right);
+    motor_move(r2_port, right);
+
+
+
+
+}
+
+void DriveController::set_motor_speed_arcade_r(){
+    int power = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+    int mod = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_X);
+
+    int left = power+mod;
+    int right = power-mod;
+
+    motor_move(l1_port, left);
+    motor_move(l2_port, left);
+    motor_move(r1_port, right);
+    motor_move(r2_port, right);
+
+
+
+
+}
+
+void DriveController::set_motor_speed_spit_l_dom(){
+    int power = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_LEFT_Y);
+    int mod = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_X);
+
+    int left = power+mod;
+    int right = power-mod;
+
+    motor_move(l1_port, left);
+    motor_move(l2_port, left);
+    motor_move(r1_port, right);
+    motor_move(r2_port, right);
+
+
+
+
+}
+
+void DriveController::set_motor_speed_split_r_dom(){
+    int power = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+    int mod = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_LEFT_X);
+
+    int left = power+mod;
+    int right = power-mod;
+
+    motor_move(l1_port, left);
+    motor_move(l2_port, left);
+    motor_move(r1_port, right);
+    motor_move(r2_port, right);
+
+
 
 
 }

@@ -33,6 +33,10 @@ class DriveController{
 
         //Private calculation functions to make code neater
         void set_motor_speed_tank();
+        void set_motor_speed_arcade_l();
+        void set_motor_speed_arcade_r();
+        void set_motor_speed_spit_l_dom();
+        void set_motor_speed_split_r_dom();
     
 
 
