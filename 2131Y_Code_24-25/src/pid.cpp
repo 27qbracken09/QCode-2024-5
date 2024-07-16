@@ -60,13 +60,72 @@ void PID::tune(int M1, int M2, int M3, int M4, int M5, int M6){
     bool run = true;
     while(run){
 
+        char p_en = '*';
+        char i_en = '-';
+        char d_en = '-';
+
+        int selected = 0;
+
         pros::c::controller_clear(pros::E_CONTROLLER_MASTER);
 
-        pros::c::controller_print(pros::E_CONTROLLER_MASTER, 1,1, "P: %f1.6 %s", p);
-        pros::c::controller_print(pros::E_CONTROLLER_MASTER, 2,1, "I: %f1.6 %s", i);
-        pros::c::controller_print(pros::E_CONTROLLER_MASTER, 3,1, "D: %f1.6 %s", d);
+        pros::c::controller_print(pros::E_CONTROLLER_MASTER, 1,1, "P: %f1.6 %s", p, p_en);
+        pros::c::controller_print(pros::E_CONTROLLER_MASTER, 2,1, "I: %f1.6 %s", i, i_en);
+        pros::c::controller_print(pros::E_CONTROLLER_MASTER, 3,1, "D: %f1.6 %s", d, d_en);
 
-        //if (pros::c::controller_get_digital(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_DIGITAL))
+        if (pros::c::controller_get_digital(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_DIGITAL_A)) {
+            selected++;
+            if (selected > 2) selected = 0;
+
+            switch (selected){
+                case 0: 
+                    p_en = '*';
+                    i_en = '-';
+                    d_en = '-';
+
+                case 1:
+                    p_en = '-';
+                    i_en = '*';
+                    d_en = '-';
+                
+                case 2:
+                    p_en = '-';
+                    i_en = '-';
+                    d_en = '*';
+
+
+            }
+
+        }
+
+        if (pros::c::controller_get_digital(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_DIGITAL_UP)) {
+            switch (selected){
+                case 0:
+                    p+=0.0001;
+                    break;
+                
+                case 1:
+                    i+=0.00001;
+
+                case 2:
+                    d+=0.0001;
+            }
+        
+        }
+
+        if (pros::c::controller_get_digital(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_DIGITAL_DOWN)) {
+            switch (selected){
+                case 0:
+                    p-=0.0001;
+                    break;
+                
+                case 1:
+                    i-=0.00001;
+
+                case 2:
+                    d-=0.0001;
+            }
+        
+        }
         
     }
 }

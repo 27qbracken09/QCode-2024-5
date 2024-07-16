@@ -16,7 +16,7 @@ class PID{
 
         double calculate(float error);
 
-        void PID::tune(int M1, int M2, int M3, int M4, int M5, int M6);
+        void tune(int M1, int M2, int M3, int M4, int M5, int M6);
     
     private:
 
