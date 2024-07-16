@@ -91,7 +91,7 @@ void DriveController::set_motor_speed_tank(){
 
 void DriveController::set_motor_speed_arcade_l(){
     int power = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_LEFT_Y);
-    int mod = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_LEFT_X);
+    int mod = -controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_LEFT_X);
 
     int left = power+mod;
     int right = power-mod;
@@ -111,7 +111,7 @@ void DriveController::set_motor_speed_arcade_l(){
 
 void DriveController::set_motor_speed_arcade_r(){
     int power = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-    int mod = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_X);
+    int mod = -controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
     int left = power+mod;
     int right = power-mod;
@@ -130,7 +130,7 @@ void DriveController::set_motor_speed_arcade_r(){
 
 void DriveController::set_motor_speed_spit_l_dom(){
     int power = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_LEFT_Y);
-    int mod = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_X);
+    int mod = -controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
     int left = power+mod;
     int right = power-mod;
@@ -149,7 +149,7 @@ void DriveController::set_motor_speed_spit_l_dom(){
 
 void DriveController::set_motor_speed_split_r_dom(){
     int power = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-    int mod = controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_LEFT_X);
+    int mod = -controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_LEFT_X);
 
     int left = power+mod;
     int right = power-mod;
