@@ -7,7 +7,7 @@ class DriveController{
     public:
 
         //Initial Drivetrain will be 4 motor with 2.75" wheels, however will leave wheels configurable and no odom
-        DriveController(int L1, int L2, int R1, int R2, float wheel_diameter);
+        DriveController(int L1, int L2, int L3, int R1, int R2, int R3, float wheel_diameter);
 
         //Move voltage command for fine grained control of each motor if nessisary.
         void move_voltage(float L1_Volt, float L2_Volt, float R1_Volt, float R2_Volt);
@@ -21,8 +21,10 @@ class DriveController{
         //Stored constants from DriveController Constructor
         int l1_port;
         int l2_port;
+        int l3_port;
         int r1_port;
         int r2_port;
+        int r3_port;
         float wheel_diameter;
 
         /* Still needs work for fully usable joystick area

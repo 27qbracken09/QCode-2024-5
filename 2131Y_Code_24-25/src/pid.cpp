@@ -56,7 +56,20 @@ double PID::calculate(float error){
             
 }
 
+void PID::tune(int M1, int M2, int M3, int M4, int M5, int M6){
+    bool run = true;
+    while(run){
 
+        pros::c::controller_clear(pros::E_CONTROLLER_MASTER);
+
+        pros::c::controller_print(pros::E_CONTROLLER_MASTER, 1,1, "P: %f1.6 %s", p);
+        pros::c::controller_print(pros::E_CONTROLLER_MASTER, 2,1, "I: %f1.6 %s", i);
+        pros::c::controller_print(pros::E_CONTROLLER_MASTER, 3,1, "D: %f1.6 %s", d);
+
+        //if (pros::c::controller_get_digital(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_DIGITAL))
+        
+    }
+}
     
 
 
