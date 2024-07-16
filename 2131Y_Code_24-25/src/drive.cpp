@@ -1,5 +1,6 @@
 #include "main.h"
 
+PID DrivePID(0,0,0);
 
 
 using namespace pros::c; //For convenience - I don't have to type out pros::c every time
@@ -14,6 +15,7 @@ DriveController::DriveController(int L1, int L2, int L3, int R1, int R2, int R3,
     r3_port = -R3;
     wheel_diameter = Wheel_Diameter;
 
+    
 }
 
 void DriveController::move_voltage(float L1_Volt, float L2_Volt, float R1_Volt, float R2_Volt){
@@ -160,6 +162,32 @@ void DriveController::set_motor_speed_split_r_dom(){
     motor_move(r1_port, right);
     motor_move(r2_port, right);
     motor_move(r3_port, right);
+
+
+
+
+}
+
+void DriveController::move(float distance){
+    //Convert wheel size to rotations
+    //360/Circumpherence is how many degrees are needed
+
+    //Calculate circumpherence
+    float ratio = 360/(wheel_diameter*M_PI);
+
+    float mot_avg = (motor_get_position(l1_port)+motor_get_position(r1_port))/2;
+
+    while (mot_avg > distance+DrivePID.error || mot_avg < distance-DrivePID.error ){
+        float left = clamp(DrivePID.calculate(distance-mot_avg),-12,12);
+        float right = left;
+
+        motor_move(l1_port, left);
+        motor_move(l2_port, left);
+        motor_move(l3_port, left);
+        motor_move(r1_port, right);
+        motor_move(r2_port, right);
+        motor_move(r3_port, right);
+    }
 
 
 

@@ -15,6 +15,8 @@ class DriveController{
         //Update drivemethod, motor speeds based on joy position, and potentially log telem data
         void update(int DriveMethod);
 
+        void move(float distance);
+
         enum DRIVEMETHOD{NONE, TANK, ARCADE_L, ARCADE_R, SPLIT_L_DOM, SPLIT_R_DOM};
 
     private:
