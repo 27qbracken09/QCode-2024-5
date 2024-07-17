@@ -128,7 +128,7 @@ void PID::tune(int M1, int M2, int M3, int M4, int M5, int M6){
         
         }
 
-        if (pros::c::controller_get_digital(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_DIGITAL_UP)) {
+        if (pros::c::controller_get_digital(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_DIGITAL_B)) {
             DriveController test_chassis(1,2,3,4,5,6,2.75);
             test_chassis.move(6);
         }

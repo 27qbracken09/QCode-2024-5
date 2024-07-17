@@ -175,6 +175,8 @@ void DriveController::move(float distance){
     //Calculate circumpherence
     float ratio = 360/(wheel_diameter*M_PI);
 
+    distance = distance*ratio;
+
     float mot_avg = (motor_get_position(l1_port)+motor_get_position(r1_port))/2;
 
     while (mot_avg > distance+DrivePID.error || mot_avg < distance-DrivePID.error ){
@@ -187,6 +189,13 @@ void DriveController::move(float distance){
         motor_move(r1_port, right);
         motor_move(r2_port, right);
         motor_move(r3_port, right);
+        
+
+        //Recalculate every time
+        mot_avg = (motor_get_position(l1_port)+motor_get_position(r1_port))/2;
+
+        //Delay to give time for processing and movement
+        pros::delay(20);
     }
 
 
