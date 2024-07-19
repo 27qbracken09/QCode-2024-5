@@ -83,3 +83,9 @@ void opcontrol(void);
 #include "drive.h"
 #include "pid.h"
 #include "utilities.h"
+#include "misc.h"
+
+//User Lib Includes
+#include <iostream>
+#include <sstream>
+#include <string>

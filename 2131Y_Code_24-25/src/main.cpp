@@ -79,6 +79,7 @@ void opcontrol() {
 	while (true){
 		
 		chassis.update(DriveController::TANK);
+		update_mechanisms();
 		pros::delay(20);
 	}
 }
