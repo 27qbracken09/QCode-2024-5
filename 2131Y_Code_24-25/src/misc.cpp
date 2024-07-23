@@ -22,7 +22,7 @@ void update_clamp(char pnumatic_port, pros::controller_digital_e_t Controller_bu
 }
 
 void update_mechanisms(){
-    update_clamp('A', pros::E_CONTROLLER_DIGITAL_L1, pros::E_CONTROLLER_DIGITAL_L2);
+    update_clamp('A', pros::E_CONTROLLER_DIGITAL_L2, pros::E_CONTROLLER_DIGITAL_L1);
 
 }
 
