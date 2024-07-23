@@ -202,3 +202,12 @@ void DriveController::move(float distance){
 
 
 }
+
+void DriveController::clear(){
+    motor_tare_position(l1_port);
+    motor_tare_position(l2_port);
+    motor_tare_position(l3_port);
+    motor_tare_position(r1_port);
+    motor_tare_position(r2_port);
+    motor_tare_position(r3_port);
+}

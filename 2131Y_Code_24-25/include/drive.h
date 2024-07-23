@@ -17,6 +17,8 @@ class DriveController{
 
         void move(float distance);
 
+        void clear();
+
         enum DRIVEMETHOD{NONE, TANK, ARCADE_L, ARCADE_R, SPLIT_L_DOM, SPLIT_R_DOM};
 
     private:
