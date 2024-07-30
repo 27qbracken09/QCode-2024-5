@@ -18,11 +18,18 @@ class PID{
 
         void tune(int M1, int M2, int M3, int M4, int M5, int M6);
 
+        void clear();
+
         //Additional PID variables
         int timeout = -1; //-1 is disabled - time in msec
         float error = 1; //Error in degrees
         float cap = 12; //Motor voltage cap to limit speed - in volts
         float start_i = -1; //-1 means that integral is not used - how close to target in degrees before starting integral
+
+        
+        int runtime = 0;
+
+
 
     
     private:

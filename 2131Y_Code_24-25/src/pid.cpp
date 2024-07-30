@@ -43,6 +43,9 @@ void PID::set(int Timeout,float Error, float Cap, float Start_I){
 
 
 double PID::calculate(float Error){
+            
+
+
             double p_portion = Error*p;
             double d_portion = (Error-prev_error)*d;
 
@@ -51,12 +54,19 @@ double PID::calculate(float Error){
 
             prev_error = error;
 
+            
+
+            runtime += 1;
             return (p_portion+i_portion+d_portion);
 
-            
-
-            
+                  
 }
+
+void PID::clear(){
+    prev_error = 0;
+    runtime = 0;
+}
+
 
 void PID::tune(int M1, int M2, int M3, int M4, int M5, int M6){
     bool run = true;
