@@ -7,6 +7,9 @@ class DriveController{
     public:
 
         //Initial Drivetrain will be 4 motor with 2.75" wheels, however will leave wheels configurable and no odom
+        DriveController(int L1, int L2, int L3, int R1, int R2, int R3, int IMU, float wheel_diameter);
+
+        //Extra constructor jic I don't have IMU on
         DriveController(int L1, int L2, int L3, int R1, int R2, int R3, float wheel_diameter);
 
         //Move voltage command for fine grained control of each motor if nessisary.
@@ -16,6 +19,7 @@ class DriveController{
         void update(int DriveMethod);
 
         void move(float distance);
+        void turn_absolute(float heading);
 
         void clear();
 
@@ -29,6 +33,9 @@ class DriveController{
         int r1_port;
         int r2_port;
         int r3_port;
+
+        int imu_port;
+
         float wheel_diameter;
 
         /* Still needs work for fully usable joystick area
