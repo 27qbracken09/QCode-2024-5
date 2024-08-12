@@ -12,6 +12,8 @@ DriveController chassis(1,2,3,8,9,10,2.75);
  */
 void initialize() {
 	chassis.clear();
+	pros::c::motor_tare_position(lift_motor);
+	pros::c::adi_digital_write(clamp_port, false);
 	
 	
 }

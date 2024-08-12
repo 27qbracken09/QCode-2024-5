@@ -28,8 +28,8 @@ void update_lift(int lift_port, float lift_max, pros::controller_digital_e_t Con
 
 
 void update_mechanisms(){
-    update_clamp('A', pros::E_CONTROLLER_DIGITAL_L2, pros::E_CONTROLLER_DIGITAL_L1);
-    update_lift(10, 200, pros::E_CONTROLLER_DIGITAL_UP, pros::E_CONTROLLER_DIGITAL_DOWN);
+    update_clamp(clamp_port, pros::E_CONTROLLER_DIGITAL_L2, pros::E_CONTROLLER_DIGITAL_L1);
+    update_lift(lift_motor, 200, pros::E_CONTROLLER_DIGITAL_UP, pros::E_CONTROLLER_DIGITAL_DOWN);
     
 }
 
