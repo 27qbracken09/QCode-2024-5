@@ -84,6 +84,7 @@ void opcontrol(void);
 #include "pid.h"
 #include "utilities.h"
 #include "misc.h"
+#include "pros/apix.h"
 
 //User Lib Includes
 #include <iostream>
