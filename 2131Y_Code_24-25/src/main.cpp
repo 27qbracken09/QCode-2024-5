@@ -1,6 +1,7 @@
 #include "main.h"
 
-DriveController chassis(1,2,3,8,9,10,2.75);
+DriveController chassis(10,11,12,13,14,15,2.75);
+
 
 
 
@@ -14,6 +15,15 @@ void initialize() {
 	chassis.clear();
 	pros::c::motor_tare_position(lift_motor);
 	pros::c::adi_digital_write(clamp_port, false);
+	
+	pros::c::screen_erase();
+	pros::c::screen_print(pros::E_TEXT_MEDIUM, 0, "2131Y Ver 0.1");
+	
+	
+	
+	
+	
+	
 	
 	
 }
@@ -69,6 +79,18 @@ void opcontrol() {
 		
 		chassis.update(DriveController::TANK);
 		update_mechanisms();
+		pros::c::screen_print(pros::E_TEXT_MEDIUM, 1, "Auton Selected: (N/A) You Should Program");
+		pros::c::screen_print(pros::E_TEXT_MEDIUM, 2, "Lift Encoder Pos: %f", pros::c::motor_get_position(lift_motor));
+		bool clamp_status = pros::c::adi_digital_read(clamp_port);
+		
+		pros::c::screen_print(pros::E_TEXT_MEDIUM, 3, "Clamp Status: %d", clamp_status);
+		pros::c::screen_print(pros::E_TEXT_MEDIUM, 4, "Left Avg: %f", pros::c::motor_get_position(11));
+		pros::c::screen_print(pros::E_TEXT_MEDIUM, 5, "Right Avg: %f", pros::c::motor_get_position(14));
+		
+
 		pros::delay(20);
+		
+		
+		
 	}
 }
